@@ -8,7 +8,7 @@ export type EventDetails = {
 
 export interface Images {
     url: string
-    height: number
+    width: number
 }
 
 export interface Info {
@@ -85,7 +85,9 @@ const MusicEventFetch: React.FC<EventDetails> = React.memo(
                 {loaded &&
                     <MusicEventDetails country={eventDetails.details._embedded.venues[0].country.name}
                         city={eventDetails.details._embedded.venues[0].city.name} place={eventDetails.details._embedded.venues[0].name}
-                        localTime={eventDetails.details.dates.start.localTime} name={eventDetails.details.name} images={ensure(eventDetails.details.images.find(item => item.height === 1152)).url}
+                        localTime={eventDetails.details.dates.start.localTime} name={eventDetails.details.name} images={ensure(eventDetails.details.images.sort(function(a, b) {
+                            return a.width - b.width;
+                        }).find(item => item.width > window.innerWidth )).url}
                         localDate={eventDetails.details.dates.start.localDate} />
                 }
             </Fragment>

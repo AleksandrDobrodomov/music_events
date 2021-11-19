@@ -13,6 +13,7 @@ export type EventDetails = {
     place: string
 };
 
+
 const useMountEffect = (fun: React.EffectCallback) => useEffect(fun, [fun]);
 
 const MusicEventDetails: React.FC<EventDetails> = React.memo(
@@ -25,6 +26,15 @@ const MusicEventDetails: React.FC<EventDetails> = React.memo(
             dispatch(updateDetailsId(id));
         }
 
+        const items: Array<string> = [
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday',
+            'Sunday'];
+
         return (
             <div ref={fieldRef} className="music-event-details__block" data-testid="event-box-child">
                 <div className="music-event-details__info">
@@ -36,7 +46,7 @@ const MusicEventDetails: React.FC<EventDetails> = React.memo(
                             <i className="fa fa-calendar" />
                         </span>
                         <span>
-                            {`${localDate} @ ${localTime}`}
+                            {`${items[new Date(localDate).getDay()]}, ${localDate} @ ${localTime.slice(0, 5)}`}
                         </span>
                     </div>
                     <div className="music-event-details__venue">
