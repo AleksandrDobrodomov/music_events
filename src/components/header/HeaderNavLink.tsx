@@ -1,7 +1,6 @@
 import React from 'react';
 import './navLink.scss';
 
-// define a Navigation Link type for our links
 export type NavLink = {
   name: string;
   id: string;

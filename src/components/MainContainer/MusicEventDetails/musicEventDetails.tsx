@@ -35,6 +35,10 @@ const MusicEventDetails: React.FC<EventDetails> = React.memo(
             'Saturday',
             'Sunday'];
 
+        var dd = String(new Date(localDate).getDate()).padStart(2, '0');
+        var mm = String(new Date(localDate).getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = new Date(localDate).getFullYear();
+
         return (
             <div ref={fieldRef} className="music-event-details__block" data-testid="event-box-child">
                 <div className="music-event-details__info">
@@ -46,7 +50,7 @@ const MusicEventDetails: React.FC<EventDetails> = React.memo(
                             <i className="fa fa-calendar" />
                         </span>
                         <span>
-                            {`${items[new Date(localDate).getDay()]}, ${localDate} @ ${localTime.slice(0, 5)}`}
+                            {`${items[new Date(localDate).getDay()]}, ${dd}.${mm}.${yyyy} @ ${localTime.slice(0, 5)}`}
                         </span>
                     </div>
                     <div className="music-event-details__venue">
