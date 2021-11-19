@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/music_events/static/css/main.b80357e4.chunk.css",
-    "main.js": "/music_events/static/js/main.1f4f1b11.chunk.js",
-    "main.js.map": "/music_events/static/js/main.1f4f1b11.chunk.js.map",
+    "main.css": "/music_events/static/css/main.08a2bdb4.chunk.css",
+    "main.js": "/music_events/static/js/main.8d61e233.chunk.js",
+    "main.js.map": "/music_events/static/js/main.8d61e233.chunk.js.map",
     "runtime-main.js": "/music_events/static/js/runtime-main.c0896388.js",
     "runtime-main.js.map": "/music_events/static/js/runtime-main.c0896388.js.map",
     "static/js/2.68d98b24.chunk.js": "/music_events/static/js/2.68d98b24.chunk.js",
     "static/js/2.68d98b24.chunk.js.map": "/music_events/static/js/2.68d98b24.chunk.js.map",
     "index.html": "/music_events/index.html",
-    "static/css/main.b80357e4.chunk.css.map": "/music_events/static/css/main.b80357e4.chunk.css.map",
+    "static/css/main.08a2bdb4.chunk.css.map": "/music_events/static/css/main.08a2bdb4.chunk.css.map",
     "static/js/2.68d98b24.chunk.js.LICENSE.txt": "/music_events/static/js/2.68d98b24.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c0896388.js",
     "static/js/2.68d98b24.chunk.js",
-    "static/css/main.b80357e4.chunk.css",
-    "static/js/main.1f4f1b11.chunk.js"
+    "static/css/main.08a2bdb4.chunk.css",
+    "static/js/main.8d61e233.chunk.js"
   ]
 }
