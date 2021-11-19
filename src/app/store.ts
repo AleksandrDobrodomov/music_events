@@ -1,9 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import genresReducer from '../state/MusicGenres';
+import detailsIdSlice from '../state/MusicDetails';
+import searchDataSlice from '../state/SearchData';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    genres: genresReducer,
+    details: detailsIdSlice,
+    searchData:searchDataSlice,
   },
 });
 

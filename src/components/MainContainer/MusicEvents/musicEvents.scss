@@ -1,0 +1,17 @@
+.music-event__wrapper {
+    padding: 32px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(332px, 1fr));
+    align-items: start;
+    grid-auto-flow: dense;
+    grid-gap: 16px;
+}
+
+@media only screen and (max-width: 621px) {
+    .music-event__wrapper {
+        padding: 16px;
+        grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+        align-items: center;
+    }
+}

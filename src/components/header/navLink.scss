@@ -1,0 +1,15 @@
+.nav-link {
+    font-size: 14px;
+    line-height: 24px;
+    margin-right: 15px;
+}
+
+.nav-link.active {
+    color: #fec017;
+}
+
+@media only screen and (min-width: 621px) {
+    .nav-link:hover {
+        color: #c0a049;
+    }
+}

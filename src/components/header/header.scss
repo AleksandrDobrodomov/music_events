@@ -1,0 +1,75 @@
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
+.app-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    h1 {
+        margin: 0;
+        font-weight: 400;
+    }
+
+    .search {
+        position: absolute;
+        right: 32px;
+        top: 20px;
+        color: #aaa;
+        font-size: 16px;
+        width: 280px;
+    }
+
+    input {
+        height: 40px;
+        padding: 8px;
+        font-size: 16px;
+        line-height: 24px;
+        text-indent: 32px;
+        width: 100%;
+        color: black;
+    }
+
+    .search .fa-search {
+        position: absolute;
+        top: 13px;
+        left: 10px;
+        color: #252b40;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .app-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .search {
+            position: relative;
+            right: 0;
+            top: 20px;
+            color: #aaa;
+            font-size: 16px;
+            width: 100%;
+        }
+    }
+}
+
+.app-header {
+    background: #252b40;
+    padding: 32px 32px 16px 32px;
+}
+
+.app-links {
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+    .app-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        cursor: none;
+    }
+}
