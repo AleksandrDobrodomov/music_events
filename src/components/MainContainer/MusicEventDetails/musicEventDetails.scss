@@ -25,17 +25,17 @@
 .music-event-details__info {
     padding: 32px;
     flex: 6;
+    display: flex;
+    flex-direction: column;
 
     h1 {
         margin: 0;
         margin-bottom: 25px;
-        font-size: 2vw;
     }
 }
 
 @media only screen and (max-width: 700px) {
     .music-event-details__info {
-        flex-direction: column-reverse;
 
         h1 {
             font-size: 1.2em !important;
@@ -54,6 +54,13 @@
 .music-event-details__text {
     margin-top: 30px;
     font-size: 1vw;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 1080px) {
+    .music-event-details__text{
+        font-size: 0.8em;
+    }
 }
 
 @media only screen and (max-width: 700px) {
@@ -116,7 +123,8 @@
     background-color: transparent;
     padding: 8px 24px;
     border: solid #ffffff 1px;
-    margin-top: 48px;
+    align-self: flex-start;
+    margin-top: auto;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
     transition: all 700ms;
 }
