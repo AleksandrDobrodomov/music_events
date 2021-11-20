@@ -19,7 +19,7 @@ const useMountEffect = (fun: React.EffectCallback) => useEffect(fun, [fun]);
 const MusicEventDetails: React.FC<EventDetails> = React.memo(
     ({ images, name, localTime, city, country, place, localDate }) => {
         const fieldRef = React.useRef<HTMLInputElement>(null);
-        const executeScroll = () => fieldRef.current?.scrollIntoView();
+        const executeScroll = () => fieldRef.current?.scrollIntoView({ behavior: 'smooth' });
         useMountEffect(executeScroll);
         const dispatch = useAppDispatch()
         const updateId = (id: string): void => {
