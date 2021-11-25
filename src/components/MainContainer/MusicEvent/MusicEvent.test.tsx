@@ -5,17 +5,10 @@ import { Provider } from 'react-redux';
 import { store } from '../../../app/store';
 
 describe('Test music event', () => {
-    test('Make sure the Music Event ID is added when the button is clicked', async () => {
+    test('Make sure the Music Event detials comp is showed when eventId and selectedId equal', async () => {
         // Render the MusicEvents
-        const { getByTestId } = render(<Provider store={store}><MusicEvent eventId={"Z698xZ8KZ17Geuy"} imgUrl={"test"} name={"test"} /></Provider>);
+        const { getByTestId } = render(<Provider store={store}><MusicEvent eventId={"Z698xZ8KZ17Geuy"} imgUrl={"test"} name={"test"} selectedDetailsId={'Z698xZ8KZ17Geuy'} /></Provider>);
         window.HTMLElement.prototype.scrollIntoView = function () { };
-        // Find the button to add id
-        const button = getByTestId('event-box');
-        expect(button).toBeInTheDocument();
-
-        // Actually click the button.
-        fireEvent.click(button);
-
         const book1 = await waitFor(
             () => getByTestId('event-box-child')
         );
