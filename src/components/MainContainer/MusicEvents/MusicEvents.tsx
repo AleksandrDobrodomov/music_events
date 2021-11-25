@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useAppSelector } from '../../../app/hooks'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import MusicEvent from '../MusicEvent/MusicEvent';
 import './musicEvents.scss';
-
+import { updateDetailsId } from '../../../state/MusicDetails';
 export interface Event {
     images: Images[]
     id: string
@@ -25,6 +25,8 @@ const MusicEvents: React.FC = React.memo(
         const [result, setResult] = useState<Events>({
             results: []
         });
+        const [eventsEmpty, setEventsEmpty] = useState<boolean>(false);
+        const dispatch = useAppDispatch()
         const selectedId = useAppSelector(state => state.genres.id);
         const searchData = useAppSelector(state => state.searchData.data);
 
@@ -34,24 +36,36 @@ const MusicEvents: React.FC = React.memo(
             }
             return argument;
         }
-
         useEffect(() => {
+            const removeDetailsId = (id: string): void => {
+                dispatch(updateDetailsId(id));
+            }
             fetch(`https://app.ticketmaster.com/discovery/v2/events?countryCode=FI&classificationId=${selectedId}&apikey=0JIWxBrWrDwCSXZzhD9HKwPngGfGc9fq`)
                 .then(response => response.json())
-                .then(response => setResult({ results: response._embedded.events }))
+                .then(response => {
+                    if (response.page.totalElements === 0) {
+                        setEventsEmpty(true);
+                    }
+                    else {
+                        setResult({ results: response._embedded.events })
+                        setEventsEmpty(false);
+                    }
+                })
                 .catch(error => console.log(error));
-        }, [selectedId]);
+            removeDetailsId("");
+        }, [selectedId, dispatch]);
         return (
             <main className="main-content">
-                <section className="music-event__wrapper">
-                    {searchData !== "" ? result.results.filter(person =>
-                        person.name.toLowerCase().includes(searchData.toLowerCase())
-                    ).map((e, i) => (
-                        <MusicEvent key={i} imgUrl={ensure(e.images.find(item => item.height === 683)).url} eventId={e.id} name={e.name}/>
-                    )) : result.results.map((e, i) => (
-                        <MusicEvent key={i} imgUrl={ensure(e.images.find(item => item.height === 683)).url} eventId={e.id} name={e.name}/>
-                    ))}
-                </section>
+                {eventsEmpty ? <div className="empty-events">No events found</div> :
+                    <section className="music-event__wrapper">
+                        {searchData !== "" ? result.results.filter(person =>
+                            person.name.toLowerCase().includes(searchData.toLowerCase())
+                        ).map((e, i) => (
+                            <MusicEvent key={i} imgUrl={ensure(e.images.find(item => item.height === 683)).url} eventId={e.id} name={e.name} />
+                        )) : result.results.map((e, i) => (
+                            <MusicEvent key={i} imgUrl={ensure(e.images.find(item => item.height === 683)).url} eventId={e.id} name={e.name} />
+                        ))}
+                    </section>}
             </main>
         );
     }

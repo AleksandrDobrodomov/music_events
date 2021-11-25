@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import './musicEvent.scss';
 import MusicEventFetch from '../MusicEventDetails/MusicEventFetch';
@@ -18,13 +18,6 @@ const MusicEvent: React.FC<Event> = React.memo(
         const updateId = (id: string): void => {
             dispatch(updateDetailsId(id));
         }
-
-        useEffect(() => {
-            return () => {
-                dispatch(updateDetailsId(""));
-            }
-        }, [dispatch])
-
         return (
             <Fragment>
                 <div onClick={() => updateId(eventId)} className={"music-event-box"} data-testid="event-box">
