@@ -29,6 +29,7 @@ const MusicEvents: React.FC = React.memo(
         const dispatch = useAppDispatch()
         const selectedId = useAppSelector(state => state.genres.id);
         const searchData = useAppSelector(state => state.searchData.data);
+        const selectedDetailsId = useAppSelector(state => state.details.id)
 
         function ensure<T>(argument: T | undefined | null, message: string = 'This value was promised to be there.'): T {
             if (argument === undefined || argument === null) {
@@ -61,9 +62,11 @@ const MusicEvents: React.FC = React.memo(
                         {searchData !== "" ? result.results.filter(person =>
                             person.name.toLowerCase().includes(searchData.toLowerCase())
                         ).map((e, i) => (
-                            <MusicEvent key={i} imgUrl={ensure(e.images.find(item => item.height === 683)).url} eventId={e.id} name={e.name} />
+                            <MusicEvent key={i} imgUrl={ensure(e.images.find(item => item.height === 683)).url}
+                                eventId={e.id} name={e.name} selectedDetailsId={selectedDetailsId} />
                         )) : result.results.map((e, i) => (
-                            <MusicEvent key={i} imgUrl={ensure(e.images.find(item => item.height === 683)).url} eventId={e.id} name={e.name} />
+                            <MusicEvent key={i} imgUrl={ensure(e.images.find(item => item.height === 683)).url}
+                                eventId={e.id} name={e.name} selectedDetailsId={selectedDetailsId} />
                         ))}
                     </section>}
             </main>

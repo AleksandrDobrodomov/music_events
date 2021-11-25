@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { useAppDispatch } from '../../../app/hooks';
 import './musicEvent.scss';
 import MusicEventFetch from '../MusicEventDetails/MusicEventFetch';
 import { updateDetailsId } from '../../../state/MusicDetails';
@@ -8,11 +8,12 @@ export type Event = {
     imgUrl: string;
     eventId: string
     name: string
+    selectedDetailsId: string
 };
 
 const MusicEvent: React.FC<Event> = React.memo(
-    ({ imgUrl, eventId, name }) => {
-        const selectedId = useAppSelector(state => state.details.id)
+    ({ imgUrl, eventId, name, selectedDetailsId }) => {
+        
         const dispatch = useAppDispatch()
 
         const updateId = (id: string): void => {
@@ -22,9 +23,9 @@ const MusicEvent: React.FC<Event> = React.memo(
             <Fragment>
                 <div onClick={() => updateId(eventId)} className={"music-event-box"} data-testid="event-box">
                     <img src={imgUrl} alt={name} />
-                    {selectedId === eventId && <div className="triangle"></div>}
+                    {selectedDetailsId === eventId && <div className="triangle"></div>}
                 </div>
-                {selectedId === eventId && <MusicEventFetch id={eventId} />}
+                {selectedDetailsId === eventId && <MusicEventFetch id={eventId} />}
             </Fragment>
         );
     }
