@@ -1,15 +1,22 @@
-import React from 'react';
-import './navLink.scss';
+import React from "react";
+import "./navLink.scss";
 
 export type NavLink = {
   name: string;
   id: string;
-  selectedId: string
-  updateId: (arg: string) => void
+  selectedId: string;
+  updateId: (arg: string) => void;
 };
 
-const AppHeaderNavLink: React.FC<NavLink> = React.memo(({ name, id, selectedId, updateId}) => (
-  <span onClick={() => updateId(id)} className={"nav-link" + (id === selectedId ? " active" : "")}>{name}</span>
-));
+const AppHeaderNavLink: React.FC<NavLink> = React.memo(
+  ({ name, id, selectedId, updateId }) => (
+    <span
+      onClick={() => updateId(id)}
+      className={"nav-link" + (id === selectedId ? " active" : "")}
+    >
+      {name}
+    </span>
+  )
+);
 
 export default AppHeaderNavLink;

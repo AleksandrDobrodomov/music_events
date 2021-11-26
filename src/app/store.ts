@@ -7,7 +7,7 @@ export const store = configureStore({
   reducer: {
     genres: genresReducer,
     details: detailsIdSlice,
-    searchData:searchDataSlice,
+    searchData: searchDataSlice,
   },
 });
 
