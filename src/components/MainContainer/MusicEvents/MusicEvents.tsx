@@ -75,21 +75,10 @@ const MusicEvents: React.FC = React.memo(() => {
         <section className="music-event__wrapper">
           {searchData !== ""
             ? result.results
-                .filter((person) =>
-                  person.name.toLowerCase().includes(searchData.toLowerCase())
-                )
-                .map((e, i) => (
-                  <MusicEvent
-                    key={i}
-                    imgUrl={
-                      ensure(e.images.find((item) => item.height === 683)).url
-                    }
-                    eventId={e.id}
-                    name={e.name}
-                    selectedDetailsId={selectedDetailsId}
-                  />
-                ))
-            : result.results.map((e, i) => (
+              .filter((person) =>
+                person.name.toLowerCase().includes(searchData.toLowerCase())
+              )
+              .map((e, i) => (
                 <MusicEvent
                   key={i}
                   imgUrl={
@@ -99,7 +88,18 @@ const MusicEvents: React.FC = React.memo(() => {
                   name={e.name}
                   selectedDetailsId={selectedDetailsId}
                 />
-              ))}
+              ))
+            : result.results.map((e, i) => (
+              <MusicEvent
+                key={i}
+                imgUrl={
+                  ensure(e.images.find((item) => item.height === 683)).url
+                }
+                eventId={e.id}
+                name={e.name}
+                selectedDetailsId={selectedDetailsId}
+              />
+            ))}
         </section>
       )}
     </main>

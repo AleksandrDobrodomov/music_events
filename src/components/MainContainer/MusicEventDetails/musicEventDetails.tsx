@@ -58,9 +58,8 @@ const MusicEventDetails: React.FC<EventDetails> = React.memo(
               <i className="fa fa-calendar" />
             </span>
             <span>
-              {`${items[new Date(localDate).getDay()]}, ${dd}.${mm}.${yyyy} @ ${
-                localTime ? localTime.slice(0, 5) : ""
-              }`}
+              {`${items[new Date(localDate).getDay()]}, ${dd}.${mm}.${yyyy} @ ${localTime ? localTime.slice(0, 5) : ""
+                }`}
             </span>
           </div>
           <div className="music-event-details__venue">
